@@ -1,0 +1,95 @@
+Akshay
+Problem Statement:Given a list of prices of toys and an amount to spend, what is the maximum number of toys you can buy?
+Note:Amount you spend may or may not be equal to the actual amount.
+
+Input format:
+The first line contains two integers,n and k,where n is the number of priced toys and k is the amount you has to spend.
+The next line contains n space-separated integers, giving the price of each toy.
+Output format:An integer that denotes the maximum number of toys you can buy and print if it is even or odd.
+Constraints:
+1<=n<=10^5
+1<=k<=10^9
+1<=Price of each toy<=10^9
+A toy can't be bought multiple times
+Code : (C/C++/JAVA/PYTHON):
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+	ll toys,money;
+	cin>>toys>>money;
+	ll rate[toys];
+	for(int i=0;i<toys;i++)
+	{
+		cin>>rate[i];
+	}
+	sort(rate, rate + toys);
+	int temp=0;
+	while(money)
+	{
+		if(money>=rate[temp])
+		{
+			money-=rate[temp];
+			temp++;
+		}
+		else
+		{
+			money=0;
+		}
+	}
+	if(temp%2==0)
+	cout<<temp<<" even"<<endl;
+	else
+	cout<<temp<<" odd"<<endl;
+	return 0;
+}
+
+
+Sample Input 1:
+7 50
+1 12 5 111 200 1000 10
+Sample Output 1:
+4 even
+Explanation:You can buy only 4 toys at most. These toys have the following prices: 1, 12, 5, 10. 4 is even
+
+Sample Input 2:
+5 100
+26 34 123 1 49
+Sample Output 2:
+3 odd
+Explanation:You can buy only 3 toys at most. These toys have the following prices: 26,34,1 or 26,49,1 or 26,34,1. 3 is odd
+
+
+
+Test case 1:
+Input : 
+1 1
+1
+Output: 1 odd
+
+Test case 2:
+Input :
+4 16
+4 4 4 4
+Output: 4 even
+
+Test case 3:
+Input :
+9 200
+11 22 33 44 55 66 77 88 14
+Output:6 even
+
+Test case 4:
+Input :
+8 1000
+234 897 123 6 976 56 9008 23
+Output:5 odd
+
+
+
+
+
+
+
+
